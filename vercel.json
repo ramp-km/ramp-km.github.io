@@ -1,6 +1,6 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/", "destination": "/grafana_prometheus_to_elastic/prometheus-to-elastic-ai-observability-webinar.html" }
+    { "source": "/grafana_prometheus_to_elastic", "destination": "/grafana_prometheus_to_elastic/prometheus-to-elastic-ai-observability-webinar.html" }
   ]
 }
