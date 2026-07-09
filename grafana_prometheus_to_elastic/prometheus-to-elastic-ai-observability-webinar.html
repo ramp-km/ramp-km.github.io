@@ -449,21 +449,62 @@
   <!-- 12. MIGRATION PLATFORM -->
   <section class="slide">
     <div class="eyebrow">Migration · Tech Preview</div>
-    <h1>Move what you've already <span class="accent">built</span></h1>
-    <p class="subhead">The Observability Migration Platform converts existing assets automatically — instead of rebuilding them by hand.</p>
-    <div class="flow">
-      <div class="node">Grafana dashboards & alerts</div>
-      <div class="node">Datadog dashboards & alerts</div>
-      <div class="node">PromQL queries</div>
-      <div class="arrow">→</div>
-      <div class="node" style="background:linear-gradient(120deg, rgba(0,191,179,0.20), rgba(0,119,204,0.20));">Migration Platform</div>
-      <div class="arrow">→</div>
-      <div class="node">Elastic equivalents</div>
+    <h1>What gets <span class="accent">migrated</span></h1>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;">
+      <div class="card" style="border-color:rgba(0,119,204,0.35); background:rgba(0,119,204,0.06); padding:14px 18px;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:7px;">
+          <span style="background:#07c; color:#fff; font-size:10px; font-weight:700; letter-spacing:.08em; padding:2px 8px; border-radius:5px; flex-shrink:0;">AUTO</span>
+          <h3 style="margin:0; font-size:15px;">Dashboards</h3>
+        </div>
+        <p style="font-size:13px; margin:0;">Most Grafana and Datadog dashboards convert automatically. Visualizations that can't be auto-converted are clearly flagged for review.</p>
+      </div>
+      <div class="card" style="border-color:rgba(0,119,204,0.35); background:rgba(0,119,204,0.06); padding:14px 18px;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:7px;">
+          <span style="background:#07c; color:#fff; font-size:10px; font-weight:700; letter-spacing:.08em; padding:2px 8px; border-radius:5px; flex-shrink:0;">AUTO</span>
+          <h3 style="margin:0; font-size:15px;">Alert rules and monitors</h3>
+        </div>
+        <p style="font-size:13px; margin:0;">Most Grafana alert rules and Datadog monitors migrate automatically; notification connectors are reconnected manually.</p>
+      </div>
+      <div class="card" style="padding:14px 18px;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:7px;">
+          <span style="background:var(--panel-2); color:var(--text-2); font-size:10px; font-weight:700; letter-spacing:.08em; padding:2px 8px; border-radius:5px; border:1px solid var(--line-strong); flex-shrink:0;">MANUAL</span>
+          <h3 style="margin:0; font-size:15px;">Agent config</h3>
+        </div>
+        <p style="font-size:13px; margin:0;">Point your telemetry at Elastic — Prometheus via remote_write, OTel via your Collector, Datadog via an OTel Collector.</p>
+      </div>
+      <div class="card" style="padding:14px 18px;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:7px;">
+          <span style="background:var(--panel-2); color:var(--text-2); font-size:10px; font-weight:700; letter-spacing:.08em; padding:2px 8px; border-radius:5px; border:1px solid var(--line-strong); flex-shrink:0;">MANUAL</span>
+          <h3 style="margin:0; font-size:15px;">RBAC</h3>
+        </div>
+        <p style="font-size:13px; margin:0;">The Elastic team walks you through replicating your RBAC rules (if any) to Elasticsearch.</p>
+      </div>
     </div>
-    <p class="subhead" style="margin-top:22px;">Tech preview today — worth piloting on a non-critical team first.</p>
-        <div class="resources">
-      <a href="https://www.elastic.co/blog/migrating-from-prometheus-to-elasticsearch">https://www.elastic.co/blog/migrating-from-prometheus-to-elasticsearch</a>
-      <a href="https://github.com/elastic/observability-migration-platform">https://github.com/elastic/observability-migration-platform</a>
+    <div class="card" style="margin-top:12px; padding:16px 24px;">
+      <div class="panel-title" style="margin-bottom:14px;">How it works</div>
+      <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:0; position:relative;">
+        <div style="position:absolute; top:18px; left:12.5%; right:12.5%; height:2px; background: repeating-linear-gradient(90deg, var(--teal) 0, var(--teal) 8px, transparent 8px, transparent 16px); z-index:0;"></div>
+        <div style="text-align:center; position:relative; z-index:1;">
+          <div style="width:38px;height:38px;border-radius:50%; border:2px solid var(--teal); background:rgba(0,191,179,0.12); display:flex;align-items:center;justify-content:center; margin:0 auto 8px; font-family:var(--font-mono); font-size:12px; font-weight:700; color:var(--teal);">01</div>
+          <div style="font-size:13px; font-weight:700; margin-bottom:4px;">Connect &amp; inventory</div>
+          <div style="font-size:12px; color:var(--text-2);">Tool discovers dashboards &amp; alert rules.</div>
+        </div>
+        <div style="text-align:center; position:relative; z-index:1;">
+          <div style="width:38px;height:38px;border-radius:50%; border:2px solid var(--teal); background:rgba(0,191,179,0.12); display:flex;align-items:center;justify-content:center; margin:0 auto 8px; font-family:var(--font-mono); font-size:12px; font-weight:700; color:var(--teal);">02</div>
+          <div style="font-size:13px; font-weight:700; margin-bottom:4px;">Convert &amp; review</div>
+          <div style="font-size:12px; color:var(--text-2);">Assets translated. Edge cases flagged.</div>
+        </div>
+        <div style="text-align:center; position:relative; z-index:1;">
+          <div style="width:38px;height:38px;border-radius:50%; border:2px solid var(--teal); background:rgba(0,191,179,0.12); display:flex;align-items:center;justify-content:center; margin:0 auto 8px; font-family:var(--font-mono); font-size:12px; font-weight:700; color:var(--teal);">03</div>
+          <div style="font-size:13px; font-weight:700; margin-bottom:4px;">Config &amp; RBAC</div>
+          <div style="font-size:12px; color:var(--text-2);">Repoint your telemetry.</div>
+        </div>
+        <div style="text-align:center; position:relative; z-index:1;">
+          <div style="width:38px;height:38px;border-radius:50%; border:2px solid var(--teal); background:rgba(0,191,179,0.12); display:flex;align-items:center;justify-content:center; margin:0 auto 8px; font-family:var(--font-mono); font-size:12px; font-weight:700; color:var(--teal);">04</div>
+          <div style="font-size:13px; font-weight:700; margin-bottom:4px;">Go live</div>
+          <div style="font-size:12px; color:var(--text-2);">Import, start monitoring. Done.</div>
+        </div>
+      </div>
     </div>
   </section>
 
